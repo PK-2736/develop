@@ -1,0 +1,12 @@
+config.py
+__pycache__/
+bot_modules/
+talk/
+cogs/__pycache__/
+cogs/talk/
+main/
+env/
+Python-3.10.2/
+Python-3.10.9/
+html/
+uninstall.txt
