@@ -271,7 +271,7 @@ class feststage(commands.Cog):
 
             await ctx.send(embed=embed3,file=file2)
     
-    @slash_command(name='stageフェス', guild_ids = guild_ids, description='フェスのステージ情報を取得します。')
+    @slash_command(name='すてフェス', guild_ids = guild_ids, description='フェスのステージ情報を取得します。')
     async def fest(self, ctx, time : Option(str, '時間', choices=["今", "次", "次の次"])):
         await ctx.defer()
 

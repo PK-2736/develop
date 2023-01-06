@@ -26,14 +26,7 @@ class friendcode(commands.Cog, name='friendcode'):
     async def addcode(self, interaction: discord.Interaction, *, friendcode: Option(str, "例：1111-1111-1111")):
         db = sqlite3.connect('main.sqlite')
         cursor = db.cursor()
-        # sql = """DROP TABLE friendcode"""
-        # a = """DROP TABLE main.friendcode"""
-        # db.execute(sql)
-        # db.execute(a)
-        #cursor.execute(
-        #    'CREATE TABLE main.friendcode(guild_id TEXT, user_id TEXT,friendcode TEXT)')
-       # cursor.execute(
-         #   'CREATE TABLE friendcode(guild_id TEXT, user_id TEXT,friendcode TEXT)')
+        
         cursor.execute(f"SELECT user_id FROM friendcode WHERE guild_id = '{interaction.guild.id}' and user_id = '{interaction.user.id}'")
         result = cursor.fetchone()
 
