@@ -108,7 +108,7 @@ class eve(commands.Cog):
                 embed1.set_footer(text="API: https://splatoon3.ink/| イカコード3")
 
         now = datetime.now().strftime('%H:%M')
-        if now == '9:01':
+        if now == '09:01':
             channel = self.bot.get_channel(1043379022685536256)
             await channel.send(embed=embed1)
 
@@ -206,7 +206,7 @@ class eve(commands.Cog):
                 embed2.set_footer(text="API: https://splatoon3.ink/| イカコード3")
 
         now = datetime.now().strftime('%H:%M')
-        if now == '9:01':
+        if now == '09:01':
             channel = self.bot.get_channel(1043379022685536256)
             await channel.send(embed=embed2)
 
@@ -304,7 +304,7 @@ class eve(commands.Cog):
                 embed3.set_footer(text="API: https://splatoon3.ink/| イカコード3")
 
         now = datetime.now().strftime('%H:%M')
-        if now == '9:01':
+        if now == '09:01':
             channel = self.bot.get_channel(1043379022685536256)
             await channel.send(embed=embed3)
 
@@ -401,7 +401,7 @@ class eve(commands.Cog):
                 embed4.set_footer(text="API: https://splatoon3.ink/| イカコード3")
 
         now = datetime.now().strftime('%H:%M')
-        if now == '9:01' or now == '13:01' or now == '17:01' or now == '21:01' or now == '01:01' or now == '05:01':
+        if now == '09:01' or now == '13:01' or now == '17:01' or now == '21:01' or now == '01:01' or now == '05:01':
             channel = self.bot.get_channel(1043379022685536256)
             await channel.send(embed=embed4)
 

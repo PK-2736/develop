@@ -7,7 +7,7 @@ from discord import Button, ButtonStyle, SelectMenu, SelectOption
 from cogs import guild_ids
 import sqlite3
 
-bot = commands.Bot(command_prefix='p.', intents=discord.Intents.all())
+bot = commands.Bot(command_prefix='p.', intents=discord.Intents.all()) 
 
 @bot.event
 async def on_ready():
@@ -72,17 +72,17 @@ bot.load_extension("cogs.help.botuse")
 bot.load_extension("cogs.help.description")
 bot.load_extension("cogs.help.rule")
 
-# bot.load_extension("cogs.stage.regularstage") #フェス時はコメントアウトする
-# bot.load_extension("cogs.stage.bankarachallengestage")#フェス時はコメントアウトする
-# bot.load_extension("cogs.stage.bankaraopenstage")#フェス時はコメントアウトする
-# bot.load_extension("cogs.stage.Xmatchstage")#フェス時はコメントアウトする
+bot.load_extension("cogs.stage.regularstage") #フェス時はコメントアウトする
+bot.load_extension("cogs.stage.bankarachallengestage")#フェス時はコメントアウトする
+bot.load_extension("cogs.stage.bankaraopenstage")#フェス時はコメントアウトする
+bot.load_extension("cogs.stage.Xmatchstage")#フェス時はコメントアウトする
 bot.load_extension("cogs.stage.coopstage")
 
 bot.load_extension("cogs.rect.private")
 bot.load_extension("cogs.rect.coop")
-# bot.load_extension("cogs.rect.bankara-open")#フェス時はコメントアウトする
-# bot.load_extension("cogs.rect.regular")#フェス時はコメントアウトする
-# bot.load_extension("cogs.rect.rectspla3")#フェス時はコメントアウトする
+bot.load_extension("cogs.rect.bankara-open")#フェス時はコメントアウトする
+bot.load_extension("cogs.rect.regular")#フェス時はコメントアウトする
+bot.load_extension("cogs.rect.rectspla3")#フェス時はコメントアウトする
 
 bot.load_extension("cogs.spla.spla3")
 bot.load_extension("cogs.spla.fc")
@@ -94,9 +94,9 @@ bot.load_extension("cogs.Twitter")
 bot.load_extension("cogs.client")
 bot.load_extension("cogs.event")
 
-bot.load_extension("cogs.fest.Alpha")
-bot.load_extension("cogs.fest.Bravo")
-bot.load_extension("cogs.fest.Charlie")
-bot.load_extension("cogs.fest.feststage")
+# bot.load_extension("cogs.fest.Alpha")
+# bot.load_extension("cogs.fest.Bravo")
+# bot.load_extension("cogs.fest.Charlie")
+# bot.load_extension("cogs.fest.feststage")
 
 bot.run(config.BOT_TOKEN)
