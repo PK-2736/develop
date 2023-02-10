@@ -193,33 +193,33 @@ class rectmantaro(discord.ui.Modal):
 
         embed = discord.Embed(
             timestamp=datetime.now(),
-            color=0xbcc210
+            color=0xffffff
         )
         embed.add_field(name="参加者リスト `[1]`", value=f"{interaction.user.mention} {datetime.now().strftime('%H:%M')}", inline=False)
-        embed.set_thumbnail(url="https://github.com/PK-2736/ikacord-develop-/blob/ace311e64072869fc2aa336dae94ec4ec9753099/images/fest/3.jpg?raw=true")
+        embed.set_thumbnail(url="https://github.com/PK-2736/develop/blob/main/images/fest/whit.png?raw=true")
         embed.set_footer(text='イカコード3|スプラ募集')
-        await interaction.followup.send(f"{interaction.user.mention}が<@&1059317020207874119>募集中！: {spla3.is_persistent(spla3())}", embed=embed, file=f, view=spla3())
+        await interaction.followup.send(f"{interaction.user.mention}が<@&1071055791295045735>募集中！: {spla3.is_persistent(spla3())}", embed=embed, file=f, view=spla3())
 
 class mantarocmd(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @slash_command(name="ぼしゅうすっぱい陣営" ,guild_ids=guild_ids, description="すっぱい陣営のフェス募集を取り付けます。")
+    @slash_command(name="ぼしゅうホワイト陣営" ,guild_ids=guild_ids, description="ホワイト陣営のフェス募集を取り付けます。")
     async def mantarorect(self, interaction: discord.Interaction):  
-        if interaction.channel.id not in [1059738051103965284,802345513495822339,803028814736392192]:
-            return await interaction.respond("エラー：すっぱい陣営募集コマンドは <#1059738051103965284> で実行して下さい。",ephemeral = True)   
+        if interaction.channel.id not in [1071581706202665122,802345513495822339,803028814736392192]:
+            return await interaction.respond("エラー：ホワイト陣営募集コマンドは <#1071581706202665122> で実行して下さい。",ephemeral = True)   
         modal = rectmantaro(title="募集の詳細を説明")
         await interaction.response.send_modal(modal)
 
     @commands.Cog.listener()
     async def on_message(self,message):
         if message.author.bot:
-            if message.channel.id not in [1059738051103965284,802345513495822339,803028814736392192]:
+            if message.channel.id not in [1071581706202665122,802345513495822339,803028814736392192]:
                 return
-            rectword=['が<@&1059317020207874119>募集中！']
+            rectword=['が<@&1071055791295045735>募集中！']
             for word in rectword:
                 if word in message.content:
-                    await message.channel.send("<@&983297498271580170><@&1059317020207874119>", delete_after=5)
+                    await message.channel.send("@everyone<@&1071055791295045735>", delete_after=5)
             return 
 
 def setup(bot: commands.Bot):

@@ -152,7 +152,7 @@ class feststage(commands.Cog):
             embed.set_footer(text="API: https://spla3.yuu26.com| イカコード3")
             now = datetime.now().strftime('%H:%M')
             if now == '09:00' or now == '21:00':
-                channel = self.bot.get_channel(1059737646928248942)
+                channel = self.bot.get_channel(1071060077789839390)
                 await channel.send(embed=embed)  
 
     @commands.Cog.listener()
