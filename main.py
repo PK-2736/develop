@@ -99,4 +99,6 @@ bot.load_extension("cogs.fest.Bravo")
 bot.load_extension("cogs.fest.Charlie")
 bot.load_extension("cogs.fest.feststage")
 
+bot.load_extension("cogs.tts.talk")
+
 bot.run(config.BOT_TOKEN)

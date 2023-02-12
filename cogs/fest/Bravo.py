@@ -198,7 +198,7 @@ class rectustuho(discord.ui.Modal):
         embed.add_field(name="参加者リスト `[1]`", value=f"{interaction.user.mention} {datetime.now().strftime('%H:%M')}", inline=False)
         embed.set_thumbnail(url="https://github.com/PK-2736/develop/blob/main/images/fest/milk.png?raw=true")
         embed.set_footer(text='イカコード3|スプラ募集')
-        await interaction.followup.send(f"{interaction.user.mention}が<@&1071055791295045735>募集中！: {spla3.is_persistent(spla3())}", embed=embed, file=f, view=spla3())
+        await interaction.followup.send(f"{interaction.user.mention}が<@&1071056384893923419>募集中！: {spla3.is_persistent(spla3())}", embed=embed, file=f, view=spla3())
 
 class ustuhocmd(commands.Cog):
     def __init__(self, bot):
@@ -216,10 +216,10 @@ class ustuhocmd(commands.Cog):
         if message.author.bot:
             if message.channel.id not in [1071581768949448784,802345513495822339,803028814736392192]:
                 return
-            rectword=['が<@&1071055791295045735>募集中！']
+            rectword=['が<@&1071056384893923419>募集中！']
             for word in rectword:
                 if word in message.content:
-                    await message.channel.send("@everyone<@&1071055791295045735>", delete_after=5)
+                    await message.channel.send("@everyone<@&1071056384893923419>", delete_after=5)
             return 
 
 def setup(bot: commands.Bot):
