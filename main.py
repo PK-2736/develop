@@ -6,8 +6,16 @@ from datetime import datetime, timedelta, timezone
 from discord import Button, ButtonStyle, SelectMenu, SelectOption
 from cogs import guild_ids
 import sqlite3
+from discord.utils import get
+import pyopenjtalk, numpy
+from scipy.io import wavfile
+import numpy as np
 
-bot = commands.Bot(command_prefix='p.', intents=discord.Intents.all()) 
+bot_intents = discord.Intents.default()
+bot_intents.voice_states = True
+bot_intents.message_content = True
+
+bot = commands.Bot(command_prefix='p.', intents=bot_intents) 
 
 @bot.event
 async def on_ready():
@@ -60,6 +68,37 @@ async def client_close(ctx):
         await ctx.respond("Botアカウントからログアウトします。")
         await bot.close()
 
+@bot.event
+async def on_voice_state_update(member: discord.Member,before: discord.VoiceState,after: discord.VoiceState):
+        
+        guild = bot.get_guild(802345513495822336)
+        voice = get(bot.voice_clients, guild=guild)
+        if voice == None or not voice.is_connected():
+            return
+
+        with open('data/voice.txt', 'r') as f:
+            voiceid = f.read()
+        input_date = int(voiceid[18:])
+        channel = guild.get_channel(input_date)
+
+        if (member.guild.voice_client is not None and member.id != bot.user.id and member.guild.voice_client.channel is before.channel and len(member.guild.voice_client.channel.members) == 1): # ボイスチャンネルに自分だけ参加していたら
+            await member.guild.voice_client.disconnect()
+            return
+
+        if before.channel is None:
+            msg = f'{member.name} さんが参加しました'
+            x, sr = pyopenjtalk.tts(msg)
+            wavfile.write("test.wav", sr, x.astype(np.int16))
+            source = discord.FFmpegPCMAudio("test.wav")
+            channel.guild.voice_client.play(source)
+
+        if after.channel is None:
+            msg = f'{member.name} さんが退出しました'
+            x, sr = pyopenjtalk.tts(msg)
+            wavfile.write("test.wav", sr, x.astype(np.int16))
+            source = discord.FFmpegPCMAudio("test.wav")
+            channel.guild.voice_client.play(source)
+
 
 #cogs reload
 #bot.load_extension("cogs.test")
@@ -72,17 +111,17 @@ bot.load_extension("cogs.help.botuse")
 bot.load_extension("cogs.help.description")
 bot.load_extension("cogs.help.rule")
 
-# bot.load_extension("cogs.stage.regularstage") #フェス時はコメントアウトする
-# bot.load_extension("cogs.stage.bankarachallengestage")#フェス時はコメントアウトする
-# bot.load_extension("cogs.stage.bankaraopenstage")#フェス時はコメントアウトする
-# bot.load_extension("cogs.stage.Xmatchstage")#フェス時はコメントアウトする
+bot.load_extension("cogs.stage.regularstage") #フェス時はコメントアウトする
+bot.load_extension("cogs.stage.bankarachallengestage")#フェス時はコメントアウトする
+bot.load_extension("cogs.stage.bankaraopenstage")#フェス時はコメントアウトする
+bot.load_extension("cogs.stage.Xmatchstage")#フェス時はコメントアウトする
 bot.load_extension("cogs.stage.coopstage")
 
 bot.load_extension("cogs.rect.private")
 bot.load_extension("cogs.rect.coop")
-#bot.load_extension("cogs.rect.bankara-open")#フェス時はコメントアウトする
-#bot.load_extension("cogs.rect.regular")#フェス時はコメントアウトする
-#bot.load_extension("cogs.rect.rectspla3")#フェス時はコメントアウトする
+bot.load_extension("cogs.rect.bankara-open")#フェス時はコメントアウトする
+bot.load_extension("cogs.rect.regular")#フェス時はコメントアウトする
+bot.load_extension("cogs.rect.rectspla3")#フェス時はコメントアウトする
 
 bot.load_extension("cogs.spla.spla3")
 bot.load_extension("cogs.spla.fc")
@@ -94,11 +133,12 @@ bot.load_extension("cogs.Twitter")
 bot.load_extension("cogs.client")
 bot.load_extension("cogs.event")
 
-bot.load_extension("cogs.fest.Alpha")
-bot.load_extension("cogs.fest.Bravo")
-bot.load_extension("cogs.fest.Charlie")
-bot.load_extension("cogs.fest.feststage")
+# bot.load_extension("cogs.fest.Alpha")
+# bot.load_extension("cogs.fest.Bravo")
+# bot.load_extension("cogs.fest.Charlie")
+# bot.load_extension("cogs.fest.feststage")
 
 bot.load_extension("cogs.tts.talk")
+bot.load_extension("cogs.tts.setting")
 
 bot.run(config.BOT_TOKEN)
