@@ -71,7 +71,7 @@ async def client_close(ctx):
 @bot.event
 async def on_voice_state_update(member: discord.Member,before: discord.VoiceState,after: discord.VoiceState):
         
-        guild = bot.get_guild(802345513495822336)
+        guild = bot.get_guild(981474117020712970)
         voice = get(bot.voice_clients, guild=guild)
         if voice == None or not voice.is_connected():
             return
@@ -111,34 +111,34 @@ bot.load_extension("cogs.help.botuse")
 bot.load_extension("cogs.help.description")
 bot.load_extension("cogs.help.rule")
 
-bot.load_extension("cogs.stage.regularstage") #フェス時はコメントアウトする
-bot.load_extension("cogs.stage.bankarachallengestage")#フェス時はコメントアウトする
-bot.load_extension("cogs.stage.bankaraopenstage")#フェス時はコメントアウトする
-bot.load_extension("cogs.stage.Xmatchstage")#フェス時はコメントアウトする
+# bot.load_extension("cogs.stage.regularstage") #フェス時はコメントアウトする
+# bot.load_extension("cogs.stage.bankarachallengestage")#フェス時はコメントアウトする
+# bot.load_extension("cogs.stage.bankaraopenstage")#フェス時はコメントアウトする
+# bot.load_extension("cogs.stage.Xmatchstage")#フェス時はコメントアウトする
 bot.load_extension("cogs.stage.coopstage")
 
 bot.load_extension("cogs.rect.private")
 bot.load_extension("cogs.rect.coop")
-bot.load_extension("cogs.rect.bankara-open")#フェス時はコメントアウトする
-bot.load_extension("cogs.rect.regular")#フェス時はコメントアウトする
-bot.load_extension("cogs.rect.rectspla3")#フェス時はコメントアウトする
+# bot.load_extension("cogs.rect.bankara-open")#フェス時はコメントアウトする
+# bot.load_extension("cogs.rect.regular")#フェス時はコメントアウトする
+# bot.load_extension("cogs.rect.rectspla3")#フェス時はコメントアウトする
 
 bot.load_extension("cogs.spla.spla3")
 bot.load_extension("cogs.spla.fc")
-bot.load_extension("cogs.gesotown.command")
-bot.load_extension("cogs.gesotown.word")
-bot.load_extension("cogs.gesotown.event")
+# bot.load_extension("cogs.gesotown.command")
+# bot.load_extension("cogs.gesotown.word")
+# bot.load_extension("cogs.gesotown.event")
 
 bot.load_extension("cogs.Twitter")
 bot.load_extension("cogs.client")
 bot.load_extension("cogs.event")
 
-# bot.load_extension("cogs.fest.Alpha")
-# bot.load_extension("cogs.fest.Bravo")
-# bot.load_extension("cogs.fest.Charlie")
-# bot.load_extension("cogs.fest.feststage")
+bot.load_extension("cogs.fest.Alpha")
+bot.load_extension("cogs.fest.Bravo")
+bot.load_extension("cogs.fest.Charlie")
+bot.load_extension("cogs.fest.feststage")
 
-bot.load_extension("cogs.tts.talk")
-bot.load_extension("cogs.tts.setting")
+# bot.load_extension("cogs.tts.talk")
+# bot.load_extension("cogs.tts.setting")
 
 bot.run(config.BOT_TOKEN)

@@ -40,7 +40,7 @@ class event(commands.Cog):
 
     @commands.Cog.listener()
     async def on_member_join(self,member: discord.Member):
-        channel = self.bot.get_channel(802345513495822339)
+        channel = self.bot.get_channel(982580316894015530)
         embed = discord.Embed( 
                         title=f"{member.name}が入室しました！",
                         description="まずは<#982600148259602442>を書こう！\n"

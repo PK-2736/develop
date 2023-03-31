@@ -95,7 +95,7 @@ class spla3(View):
                     await interaction.message.reply(f"{interaction.message.interaction.user.mention}{interaction.user.mention}", embed=embed, delete_after=120.0) 
                     
         if flag:
-            embed = discord.Embed(description=f"{interaction.user.name}は参加していないので取り消せません")
+            embed = discord.Embed(description=f"{interaction.user.name}は参加していないので取り消せません\n募集主は取り消しが出来ません。")
             await interaction.response.send_message(embed=embed,ephemeral = True)
 
     @discord.ui.button(
@@ -193,33 +193,33 @@ class rectustuho(discord.ui.Modal):
 
         embed = discord.Embed(
             timestamp=datetime.now(),
-            color=0xe24d2c
+            color=0xa508da
         )
         embed.add_field(name="参加者リスト `[1]`", value=f"{interaction.user.mention} {datetime.now().strftime('%H:%M')}", inline=False)
-        embed.set_thumbnail(url="https://github.com/PK-2736/develop/blob/main/images/fest/milk.png?raw=true")
+        embed.set_thumbnail(url="https://github.com/PK-2736/develop/blob/main/images/fest/jituzaisurunoha%20(1).png?raw=true")
         embed.set_footer(text='イカコード3|スプラ募集')
-        await interaction.followup.send(f"{interaction.user.mention}が<@&1071056384893923419>募集中！: {spla3.is_persistent(spla3())}", embed=embed, file=f, view=spla3())
+        await interaction.followup.send(f"{interaction.user.mention}が<@&1091251190081277952>募集中！: {spla3.is_persistent(spla3())}", embed=embed, file=f, view=spla3())
 
 class ustuhocmd(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @slash_command(name="ぼしゅうミルク陣営" ,guild_ids=guild_ids, description="ミルク陣営のフェス募集を取り付けます。")
+    @slash_command(name="ぼしゅう宇宙人陣営" ,guild_ids=guild_ids, description="宇宙人陣営のフェス募集を取り付けます。")
     async def ustuhorect(self, interaction: discord.Interaction):  
-        if interaction.channel.id not in [1071581768949448784,802345513495822339,803028814736392192]:
-            return await interaction.respond("エラー：ミルク陣営募集コマンドは <#1071581768949448784> で実行して下さい。",ephemeral = True)   
+        if interaction.channel.id not in [1090229183629762650,802345513495822339,803028814736392192]:
+            return await interaction.respond("エラー：宇宙人陣営募集コマンドは <#1090229183629762650> で実行して下さい。",ephemeral = True)   
         modal = rectustuho(title="募集の詳細を説明")
         await interaction.response.send_modal(modal)
 
     @commands.Cog.listener()
     async def on_message(self,message):
         if message.author.bot:
-            if message.channel.id not in [1071581768949448784,802345513495822339,803028814736392192]:
+            if message.channel.id not in [1090229183629762650,802345513495822339,803028814736392192]:
                 return
-            rectword=['が<@&1071056384893923419>募集中！']
+            rectword=['が<@&1091251190081277952>募集中！']
             for word in rectword:
                 if word in message.content:
-                    await message.channel.send("@everyone<@&1071056384893923419>", delete_after=5)
+                    await message.channel.send("@everyone<@&1091251190081277952>", delete_after=5)
             return 
 
 def setup(bot: commands.Bot):
