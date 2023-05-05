@@ -101,18 +101,18 @@ class event(commands.Cog):
         channel = self.bot.get_channel(982596256868225054)
         await channel.send(f"{member.name}行かないで！どうしてなの！？ 私を置いていかないで！")
 
-    @commands.Cog.listener()
-    async def on_application_command_error(
-        self, ctx: discord.ApplicationContext, error: discord.ApplicationCommandError
-            ):
-        if isinstance(error, discord.ApplicationCommandInvokeError):
-                embed = discord.Embed(
-                    color=0xe64b47,
-                    description="コマンドエラー"
-                    )
-                await ctx.send(embed=embed, reference=ctx.message)
-        else:
-                raise error
+    # @commands.Cog.listener()
+    # async def on_application_command_error(
+    #     self, ctx: discord.ApplicationContext, error: discord.ApplicationCommandError
+    #         ):
+    #     if isinstance(error, discord.ApplicationCommandInvokeError):
+    #             embed = discord.Embed(
+    #                 color=0xe64b47,
+    #                 description="コマンドエラー"
+    #                 )
+    #             await ctx.send(embed=embed, reference=ctx.message)
+    #     else:
+    #             raise error
     
 def setup(bot):
     bot.add_cog(event(bot))

@@ -10,6 +10,8 @@ import os
 import json
 import requests
 
+print("settingの読み込み完了")
+
 class set(commands.Cog):
     def __init__(self, bot):
         self.bot=bot

@@ -8,7 +8,9 @@ from cogs import guild_ids
 import re
 from datetime import datetime
 from discord.utils import get
+import pydub
 
+print("talkの読み込み完了")
 
 class TTS(commands.Cog):
     def __init__(self, bot):
@@ -73,7 +75,7 @@ class TTS(commands.Cog):
 
       with open('data/voice.txt', 'r') as f:
         voiceid = f.read()
-        match = re.fullmatch(f"{message.channel.id}{message.author.voice.channel.id}",voiceid)
+        match = re.match(f"{message.channel.id}",voiceid)
 
       if match:
 
@@ -99,7 +101,7 @@ class TTS(commands.Cog):
               source = discord.FFmpegPCMAudio("test.wav")
               message.guild.voice_client.play(source)
               return
-
+            
             elif member:
               for a in message.mentions:
                   text = message.content
@@ -110,6 +112,7 @@ class TTS(commands.Cog):
                   source = discord.FFmpegPCMAudio("test.wav")
                   message.guild.voice_client.play(source)
                   return
+              
               
             #TODO リプライへの反応 
             # elif message.:
@@ -124,6 +127,8 @@ class TTS(commands.Cog):
               wavfile.write("test.wav", sr, x.astype(np.int16))
               source = discord.FFmpegPCMAudio("test.wav")
               message.guild.voice_client.play(source)
+      else:
+          return
 
 def setup(bot):
     bot.add_cog(TTS(bot))
