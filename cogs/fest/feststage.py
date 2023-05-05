@@ -1,3 +1,5 @@
+import festint
+
 from discord.ext import tasks, commands
 import discord
 from discord.commands import slash_command, Option
@@ -152,7 +154,7 @@ class feststage(commands.Cog):
             embed.set_footer(text="API: https://spla3.yuu26.com| イカコード3")
             now = datetime.now().strftime('%H:%M')
             if now == '09:00' or now == '21:00':
-                channel = self.bot.get_channel(1071060077789839390)
+                channel = self.bot.get_channel(festint.Stage_channel)
                 await channel.send(embed=embed)  
 
     @commands.Cog.listener()

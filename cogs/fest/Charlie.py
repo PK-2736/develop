@@ -1,5 +1,6 @@
 team= "mantaro"
 
+import festint
 from email import message
 import discord
 from discord.ext import commands
@@ -95,7 +96,7 @@ class spla3(View):
                     await interaction.message.reply(f"{interaction.message.interaction.user.mention}{interaction.user.mention}", embed=embed, delete_after=120.0) 
                     
         if flag:
-            embed = discord.Embed(description=f"{interaction.user.name}は参加していないので取り消せません\n募集主は取り消しが出来ません。")
+            embed = discord.Embed(description=f"{interaction.user.name}は参加していないので取り消せません")
             await interaction.response.send_message(embed=embed,ephemeral = True)
 
     @discord.ui.button(
@@ -193,33 +194,33 @@ class rectmantaro(discord.ui.Modal):
 
         embed = discord.Embed(
             timestamp=datetime.now(),
-            color=0xda6408
+            color=0xffffff
         )
         embed.add_field(name="参加者リスト `[1]`", value=f"{interaction.user.mention} {datetime.now().strftime('%H:%M')}", inline=False)
-        embed.set_thumbnail(url="https://github.com/PK-2736/develop/blob/main/images/fest/jituzaisurunoha%20(2).png?raw=true")
+        embed.set_thumbnail(url=f"{festint.Charlie_image}")
         embed.set_footer(text='イカコード3|スプラ募集')
-        await interaction.followup.send(f"{interaction.user.mention}が<@&1091251300123033670>募集中！: {spla3.is_persistent(spla3())}", embed=embed, file=f, view=spla3())
+        await interaction.followup.send(f"{interaction.user.mention}が<@&{festint.Charlie_role}>募集中！: {spla3.is_persistent(spla3())}", embed=embed, file=f, view=spla3())
 
 class mantarocmd(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @slash_command(name="ぼしゅう雪男陣営" ,guild_ids=guild_ids, description="雪男陣営のフェス募集を取り付けます。")
+    @slash_command(name=f"ぼしゅう{festint.Charlie_name}陣営" ,guild_ids=guild_ids, description=f"{festint.Charlie_name}陣営のフェス募集を取り付けます。")
     async def mantarorect(self, interaction: discord.Interaction):  
-        if interaction.channel.id not in [1090229130668277851,802345513495822339,803028814736392192]:
-            return await interaction.respond("エラー：雪男陣営募集コマンドは <#1090229130668277851> で実行して下さい。",ephemeral = True)   
+        if interaction.channel.id not in [{festint.Charlie_channel},802345513495822339,803028814736392192]:
+            return await interaction.respond(f"エラー：{festint.Charlie_name}陣営募集コマンドは <#{festint.Charlie_channel}> で実行して下さい。",ephemeral = True)   
         modal = rectmantaro(title="募集の詳細を説明")
         await interaction.response.send_modal(modal)
 
     @commands.Cog.listener()
     async def on_message(self,message):
         if message.author.bot:
-            if message.channel.id not in [1090229130668277851,802345513495822339,803028814736392192]:
+            if message.channel.id not in [{festint.Charlie_channel},802345513495822339,803028814736392192]:
                 return
-            rectword=['が<@&1091251300123033670>募集中！']
+            rectword=[f'が<@&{festint.Charlie_role}>募集中！']
             for word in rectword:
                 if word in message.content:
-                    await message.channel.send("@everyone<@&1091251300123033670>", delete_after=5)
+                    await message.channel.send(f"@everyone<@&{festint.Charlie_role}>", delete_after=5)
             return 
 
 def setup(bot: commands.Bot):
