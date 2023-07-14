@@ -1,0 +1,7 @@
+config.py
+__pycache__/
+bot_modules/
+talk/
+cogs/__pycache__/
+cogs/talk/
+main/
