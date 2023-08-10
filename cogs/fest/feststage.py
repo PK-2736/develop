@@ -1,16 +1,12 @@
 from discord.ext import tasks, commands
 import discord
 from discord.commands import slash_command, Option
-import random
 from PIL import Image
-from PIL import ImageFont
-from PIL import ImageDraw
 from datetime import datetime
 import requests
-import json
-from discord.ext import pages
 from cogs import guild_ids
 import io
+from festint import *
 
 print("feststageの読み込み完了")
 
@@ -152,7 +148,7 @@ class feststage(commands.Cog):
             embed.set_footer(text="API: https://spla3.yuu26.com| イカコード3")
             now = datetime.now().strftime('%H:%M')
             if now == '09:00' or now == '21:00':
-                channel = self.bot.get_channel(1071060077789839390)
+                channel = self.bot.get_channel(1129056779318329394)
                 await channel.send(embed=embed)  
 
     @commands.Cog.listener()

@@ -178,9 +178,9 @@ class RectmantaroModal(discord.ui.Modal):
             color=color
         )
         embed.add_field(name="参加者リスト `[1]`", value=f"{interaction.user.mention} {datetime.now().strftime('%H:%M')}", inline=False)
-        embed.set_thumbnail(url=f"{Charlie_image}")
+        embed.set_thumbnail(url=f"https://github.com/PK-2736/develop/blob/master/images/fest/IMG_2951.png?raw=true")
         embed.set_footer(text='イカコード3 | スプラ募集')
-        await interaction.followup.send(f"{interaction.user.mention}が<@&{Charlie_role}>募集中！", embed=embed, file=f,view=Spla3View(interaction.user.id))
+        await interaction.followup.send(f"{interaction.user.mention}が<@&1129054074222936285>募集中！", embed=embed, file=f,view=Spla3View(interaction.user.id))
 
 class Mantarocmd(commands.Cog):
     def __init__(self, bot):
@@ -188,19 +188,19 @@ class Mantarocmd(commands.Cog):
 
     @commands.slash_command(name=f"ぼしゅう{Charlie_name}陣営", guild_ids=guild_ids, description=f"{Charlie_name}陣営のフェス募集を取り付けます。")
     async def mantarorect(self, interaction: discord.Interaction):
-        if interaction.channel.id not in [Charlie_channel, 802345513495822339, 803028814736392192]:
-            return await interaction.respond(f"エラー：{Charlie_name}陣営募集コマンドは <#{Charlie_channel}> で実行してください。", ephemeral=True)
+        if interaction.channel.id not in [1129056471552897084, 802345513495822339, 803028814736392192]:
+            return await interaction.respond(f"エラー：{Charlie_name}陣営募集コマンドは <#1129056471552897084> で実行してください。", ephemeral=True)
         
         modal = RectmantaroModal(title="募集の詳細を説明")
         await interaction.response.send_modal(modal)
 
     @commands.Cog.listener()
     async def on_message(self, message):
-        if message.author.bot and message.channel.id in [Charlie_channel, 802345513495822339, 803028814736392192]:
-            rectword = [f'が<@&{Charlie_role}>募集中！']
+        if message.author.bot and message.channel.id in [1129056471552897084, 802345513495822339, 803028814736392192]:
+            rectword = [f'が<@&1129054074222936285>募集中！']
             for word in rectword:
                 if word in message.content:
-                    await message.channel.send(f"@everyone<@&{Charlie_role}>", delete_after=5)
+                    await message.channel.send(f"@everyone<@&1129054074222936285>", delete_after=5)
 
 def setup(bot: commands.Bot):
     bot.add_cog(Mantarocmd(bot=bot))

@@ -27,7 +27,7 @@ class Splatoon3(commands.Cog):
             json_data = json.load(json_open)
             buki = random.choice(json_data)
             ja_name = buki["name"]["ja_JP"]
-            path = "images/weapons2.0.0/" + buki["name"]["ja_JP"] + ".png"
+            path = "images/weapons4.0.0/" + buki["name"]["ja_JP"] + ".png"
             file = discord.File(path, filename="image.png")
             user = message.author.display_name
             rw = discord.Embed(title = f"{user}さんにおすすめのブキは\n{ja_name}！",)
@@ -36,21 +36,21 @@ class Splatoon3(commands.Cog):
             await message.respond(file=file,embed=rw)
 
     @commands.Cog.listener()
-    async def on_message(self,message):
+    async def on_message(self, message):
         if message.author.bot:
             return
+
         if message.content.lower() in ['ブキ', '武器', 'ランダム武器', 'ぶき', 'buki', 'Buki', 'らんだむぶき', 'rw', 'うえぽん', 'ウエポン', 'weapon', 'Weapon', 'ランダムブキ']:
-            json_open = open('data/spla3.json', 'r',encoding='utf-8')
+            json_open = open('data/spla3.json', 'r', encoding='utf-8')
             json_data = json.load(json_open)
             buki = random.choice(json_data)
             ja_name = buki["name"]["ja_JP"]
-            path = "images/weapons2.0.0/" + buki["name"]["ja_JP"] + ".png"
+            path = "images/weapons4.0.0/" + buki["name"]["ja_JP"] + ".png"
             file = discord.File(path, filename="image.png")
             user = message.author.display_name
-            rw = discord.Embed(title = f"{user}さんにおすすめのブキは\n{ja_name}！",)
-            #rw.add_field(name=f"{user}さんにおすすめのブキは",value=f"{ja_name}！")
+            rw = discord.Embed(title=f"{user}さんにおすすめのブキは\n{ja_name}！",)
             rw.set_image(url="attachment://image.png")
-            await message.channel.send(file=file,embed=rw)
+            await message.channel.send(file=file, embed=rw)
 
 
     @slash_command(name='ギア表', guild_ids = guild_ids, description='Splatoon3のブランド別ギア表を表示します。')
